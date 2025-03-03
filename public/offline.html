@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline - Waktu Solat</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
+      color: #102a43;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 90%;
+      width: 400px;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #334e68;
+    }
+    
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #486581;
+      margin-bottom: 1.5rem;
+    }
+    
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #3182ce;
+    }
+    
+    .button {
+      display: inline-block;
+      background-color: #3182ce;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    
+    .button:hover {
+      background-color: #2c5282;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: linear-gradient(to bottom, #1a202c, #2d3748);
+        color: #e2e8f0;
+      }
+      
+      .container {
+        background-color: #2d3748;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+      
+      h1 {
+        color: #e2e8f0;
+      }
+      
+      p {
+        color: #a0aec0;
+      }
+      
+      .icon {
+        color: #4299e1;
+      }
+      
+      .button {
+        background-color: #4299e1;
+      }
+      
+      .button:hover {
+        background-color: #3182ce;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">📶</div>
+    <h1>Anda Sedang Offline</h1>
+    <p>Maaf, Anda tidak terhubung ke internet saat ini. Beberapa fitur aplikasi Waktu Solat mungkin tidak tersedia.</p>
+    <p>Jika Anda telah mengakses aplikasi sebelumnya, beberapa data mungkin masih tersedia dalam mode offline.</p>
+    <a href="/" class="button">Coba Lagi</a>
+  </div>
+  
+  <script>
+    // Periksa koneksi internet secara berkala
+    function checkConnection() {
+      if (navigator.onLine) {
+        window.location.href = '/';
+      }
+    }
+    
+    // Periksa setiap 5 detik
+    setInterval(checkConnection, 5000);
+    
+    // Periksa saat status online berubah
+    window.addEventListener('online', checkConnection);
+    
+    // Tambahkan event listener untuk tombol "Coba Lagi"
+    document.querySelector('.button').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.reload();
+    });
+  </script>
+</body>
+</html> 

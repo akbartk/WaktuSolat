@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  waktusolat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: waktusolat-app
+    restart: unless-stopped
+    ports:
+      - "3030:3030"
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://0.0.0.0:3030"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - waktusolat-network
+
+networks:
+  waktusolat-network:
+    driver: bridge 
