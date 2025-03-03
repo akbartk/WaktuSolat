@@ -663,7 +663,7 @@ export default function AdzanCountdown() {
     return date.toLocaleTimeString('id-ID', {
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit',
+      second: undefined, // Hilangkan detik
       hour12: false
     });
   }, []);
